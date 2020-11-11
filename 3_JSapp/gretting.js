@@ -19,6 +19,18 @@ function handleSubmit(event) {
     saveName(currentValue);
 }
 
+/*
+function askForName() {
+    form.classList.add(SHOWING_CN);
+    form.addEventListener("submit", handleSubmit);
+  }
+  */
+function askForName() {
+    form.classList.add(SHOWING_CN);
+    form.addEventListener("submit",handleSubmit);
+}
+
+
 
 
 function paintGreeting(text) {
@@ -28,16 +40,19 @@ function paintGreeting(text) {
 }
 
 
-
-function askForName() {
-    form.classList.add(SHOWING_CN);
-    form.addEventListener("submit",handleSubmit);
+function loadName() {
+    const currentUser = localStorage.getItem(USER_LS);
+    if (currentUser === null) {
+      askForName();
+    } else {
+      paintGreeting(currentUser);
+    }
 }
 
 
 
 function loadName() {
-    const currentUser = localStorage.getItem();
+    const currentUser = localStorage.getItem(USER_LS);
     if(currentUser === null) {
         // ??
         askForName()
