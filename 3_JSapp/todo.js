@@ -37,11 +37,11 @@ function deleteToDo(event) {
     const btn = event.target;
     // target은 삭제버튼을 눌렀는데 이게 부모객체가 뭔지, 어떤 ToDo Item의 삭제 버튼인지 알아내는거임
 
-    const li = btn.paintNode;
+    const li = btn.parentNode;
     toDoList.removeChild(li);
-    const cleanToDos = toDos.filter(function(todo) {
+    const cleanToDos = toDos.filter(function(toDo) {
         return toDo.id !== parseInt(li.id);
-    })
+    });
 
     toDos = cleanToDos;
     saveToDos();
@@ -104,8 +104,8 @@ function handleSubmit(event) {
 
 
 function loadToDos() {
-    const toDos = localStorage.getItem(TODOS_LS);
-    if(toDos !== null) {// 투두 아이템이 뭐가 있다면???
+    const loadedToDos = localStorage.getItem(TODOS_LS);
+    if(loadedToDos !== null) {// 투두 아이템이 뭐가 있다면???
         const parsedToDos = JSON.parse(loadedToDos);
         parsedToDos.forEach(function(toDo) {
             paintToDo(toDo.text);

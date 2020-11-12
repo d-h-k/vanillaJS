@@ -5,10 +5,10 @@ const IMG_NUMBER = 3;
 
 
 //입력받은 번호의 이미지를 출력해 주는 함수
-function paintImage(IMG_NUMBER) {
+function paintImage(imgNumber) {
     const image = new Image();
     // JS에서 제공하는 Image라는 객체를 생성해서 image라는 변수에 저장해놓음
-    image.src = `images/${IMG_NUMBER + 1},jpg`;
+    image.src = `images/${imgNumber + 1}.jpg`;
     image.classList.add("bgImage");
     
     body.prepend(image);
